@@ -1,0 +1,36 @@
+version: '3.9'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mercadolivro
+      MYSQL_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  # app:
+  #   image: mercado-livro-api
+  #   container_name: mercadolivro-api
+  #   depends_on:
+  #     - mysql
+  #   ports:
+  #     - "8080:8080"
+  #   networks:
+  #     - app-network
+
+volumes:
+  mysql_data:
+
+networks:
+  app-network:
+
+#docker build -t mercado-livro-api:latest .
+#docker run -d --name mercado-livro-api --network mercado-livro_app-network -e MYSQL_HOST=mysql-container -p 8080:8080 mercado-livro-api
