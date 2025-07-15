@@ -7,7 +7,8 @@ WORKDIR /app
 COPY . .
 
 # Executa o build ignorando os testes
-RUN ./gradlew clean build -x test --no-daemon
+#RUN ./gradlew clean build -x test --no-daemon
+RUN chmod +x gradlew && ./gradlew clean build -x test --no-daemon
 
 # Stage 2: Runtime
 FROM eclipse-temurin:17-jre
