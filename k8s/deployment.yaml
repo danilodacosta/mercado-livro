@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mercado-livro-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mercado-livro-api
+  template:
+    metadata:
+      labels:
+        app: mercado-livro-api
+    spec:
+      containers:
+        - name: mercado-livro-api
+          image: 395822550812.dkr.ecr.us-east-1.amazonaws.com/mercado-livro-api:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_HOST
+              value: mysql-container
