@@ -22,8 +22,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: mercado-livro
-          file: mercado-livro/Dockerfile
+          context: .
+          file: ./Dockerfile
           push: true
           tags: |
             danilodacosta/mercado-livro-api:${{ github.run_number }}
