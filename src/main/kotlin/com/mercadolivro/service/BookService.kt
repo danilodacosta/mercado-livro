@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.PathVariable
 
 @Service
-class BookService(val bookRepository: BookRepository) {
+class BookService(private val bookRepository: BookRepository) {
 
     fun getAll(pageable: Pageable, name: String?): Page<BookModel> {
         return name?.let {

@@ -1,18 +1,8 @@
 package com.mercadolivro.model
 
 import com.mercadolivro.enums.CustomerStatus
-import com.mercadolivro.enums.Profile
-import org.hibernate.annotations.CollectionType
-import org.yaml.snakeyaml.constructor.Constructor
-import javax.persistence.CollectionTable
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.EnumType
-import javax.persistence.Enumerated
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.JoinColumn
+import com.mercadolivro.enums.Role
+import javax.persistence.*
 
 @Entity(name = "customer")
 data class CustomerModel(
@@ -32,11 +22,12 @@ data class CustomerModel(
     var status: CustomerStatus,
 
     @Column
-    var password: String,
+    val password: String,
 
-    @CollectionTable(name = "customer_roles", joinColumns = [JoinColumn(name = "customer_id")])
-    @Column
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    var roles: Set<Profile> = setOf()
+    @ElementCollection(targetClass = Role::class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "customer_roles", joinColumns = [JoinColumn(name = "customer_id")])
+    var roles: Set<Role> = setOf()
 
 )
