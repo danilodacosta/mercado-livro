@@ -25,6 +25,8 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("io.springfox:springfox-boot-starter:3.0.0")
 
+	implementation("io.jsonwebtoken:jjwt:0.2")
+
 	implementation("org.flywaydb:flyway-core:7.7.0")
 	implementation("com.fasterxml.jackson.core:jackson-core")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")

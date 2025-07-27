@@ -16,7 +16,7 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping("books")
-class BookController(val bookService: BookService, val customerService: CustomerService) {
+class BookController(private val bookService: BookService, private val customerService: CustomerService) {
 
     @GetMapping
     fun getAll(@PageableDefault(page = 0, size = 10) pageable: Pageable,
