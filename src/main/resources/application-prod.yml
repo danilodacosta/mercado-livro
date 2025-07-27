@@ -1,0 +1,5 @@
+spring:
+  datasource: #mysql-container
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/mercadolivroprod?createDatabaseIfNotExist=true
+    username: root
+    password: root
