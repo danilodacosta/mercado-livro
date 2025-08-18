@@ -6,6 +6,12 @@ plugins {
 	kotlin("jvm") version "1.6.21"
 	kotlin("plugin.spring") version "1.6.21"
 	kotlin("plugin.jpa") version "1.6.21"
+	jacoco
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_11
+	targetCompatibility = JavaVersion.VERSION_11
 }
 
 group = "com.mercadolivro"
@@ -31,6 +37,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.core:jackson-core")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.mockk:mockk:1.12.0")
 	runtimeOnly("com.mysql:mysql-connector-j")
 }
 
