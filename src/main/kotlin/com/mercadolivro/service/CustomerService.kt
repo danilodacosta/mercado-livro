@@ -8,7 +8,6 @@ import com.mercadolivro.model.CustomerModel
 import com.mercadolivro.repository.CustomerRepository
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.*
 
 @Service
 class CustomerService(private val customerRepository: CustomerRepository,
@@ -36,12 +35,12 @@ class CustomerService(private val customerRepository: CustomerRepository,
 
     fun updateCustomer(customer: CustomerModel) {
         if(!customerRepository.existsById(customer.id!!)) {
-            throw Exception()
+            throw NotFoundException(Erros.ML201.message.format(customer.id), Erros.ML201.code)
         }
             customerRepository.save(customer)
     }
 
-    fun deleteCustomer(@PathVariable id: Int) {
+    fun deleteCustomer(id: Int) {
         var customer = getById(id)
         bookService.deleteByCustomer(customer)
 

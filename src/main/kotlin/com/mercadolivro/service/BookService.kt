@@ -9,7 +9,6 @@ import com.mercadolivro.repository.BookRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.PathVariable
 
 @Service
 class BookService(private val bookRepository: BookRepository) {
@@ -37,7 +36,7 @@ class BookService(private val bookRepository: BookRepository) {
        bookRepository.save(book)
     }
 
-    fun deleteBook(@PathVariable id: Int) {
+    fun deleteBook(id: Int) {
 
         var book = this.getById(id)
         book.status = BookStatus.CANCELADO;
